@@ -81,9 +81,15 @@ function setMusic(index) {
 
   music = new Audio(musicas[indexMusicaAtual].musicaPath);
 }
+function setProgress() {
+  const progressBarra = progressBar.value;
+  const tempo = (progressBarra / 100) * music.duration;
+  music.currentTime = tempo;
+}
 
 buttonPlay.addEventListener("click", play);
 buttonPause.addEventListener("click", pause);
+progressBar.addEventListener("input", setProgress);
 
 buttonNext.addEventListener("click", () => {
   pause();
